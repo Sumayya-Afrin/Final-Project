@@ -1,11 +1,22 @@
 import { Injectable } from '@angular/core';
 import { ICraft } from './app.component';
+import { NewCraft } from '../../craft';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CraftService {
   constructor() {}
+
+  addCraftSer(newCraft: NewCraft) {
+    return fetch(`https://66bd922a74dfc195586ce90a.mockapi.io/crafts`, {
+      method: 'POST',
+      body: JSON.stringify(newCraft),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    }).then((res) => res.json());
+  }
 
   getAllCrafts(): Promise<ICraft[]> {
     return fetch('https://66bd922a74dfc195586ce90a.mockapi.io/crafts').then(
