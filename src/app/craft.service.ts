@@ -18,4 +18,13 @@ export class CraftService {
       `https://66bd922a74dfc195586ce90a.mockapi.io/crafts/${id}`
     ).then((res) => res.json());
   }
+
+  deleteCraftById(craft: any) {
+    return fetch(
+      `https://66bd922a74dfc195586ce90a.mockapi.io/crafts/${craft.id}`,
+      {
+        method: 'DELETE',
+      }
+    ).then((res) => res.json());
+  }
 }

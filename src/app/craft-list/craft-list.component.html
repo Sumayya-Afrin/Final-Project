@@ -3,7 +3,11 @@
   @if(isLoading){
   <h1>Loading ⌛</h1>
   } @for (craft of craftList; track $index){
-  <app-crafts [craft]="craft" [id]="craft.id" />
+  <app-crafts
+    [craft]="craft"
+    (deleteCraftEvent)="deleteCraftP($event)"
+    [id]="craft.id"
+  />
   }
 </section>
 

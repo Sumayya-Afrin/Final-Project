@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
@@ -22,7 +22,7 @@ import { CraftService } from '../craft.service';
   styleUrl: './crafts.component.scss',
 })
 export class CraftsComponent {
-  // @Input() craft = {
+  // @Input() craft1 = {
   //   title: 'Artisan Wooden Bowl',
   //   description:
   //     'Handcrafted wooden bowl made from reclaimed oak, featuring intricate carvings and a smooth finish.',
@@ -33,6 +33,7 @@ export class CraftsComponent {
   // };
 
   @Input() craft!: ICraft;
+  @Output() deleteCraftEvent = new EventEmitter<any>();
 
   isLoading: boolean = true;
   msg = '';
@@ -42,7 +43,8 @@ export class CraftsComponent {
     throw new Error('Method not implemented.');
   }
   deleteCraft() {
-    throw new Error('Method not implemented.');
+    console.log('Button clicked...');
+    this.deleteCraftEvent.emit(this.craft);
   }
   showDescription() {
     this.show = this.show ? false : true;

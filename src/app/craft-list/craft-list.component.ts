@@ -15,6 +15,7 @@ export class CraftListComponent {
   craftList: Array<ICraft> = [];
   isLoading: boolean = true;
   msg = '';
+  $craft: any;
 
   constructor(public craftService: CraftService) {}
 
@@ -34,5 +35,10 @@ export class CraftListComponent {
         this.isLoading = false;
         this.msg = 'Something went wrong 🥲';
       });
+  }
+
+  deleteCraftP(craft: any) {
+    console.log('deleting...');
+    this.craftService.deleteCraftById(craft).then(() => this.loadCrafts());
   }
 }
