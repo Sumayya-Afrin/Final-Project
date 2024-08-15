@@ -1,0 +1,9 @@
+<section class="movie-list-container">
+  @if(isLoading){
+  <h1>Loading ⌛</h1>
+  } @for (craft of craftList; track $index){
+  <app-crafts [craft]="craft" [id]="craft.id" />
+  }
+</section>
+
+<h1>{{ msg }}</h1>

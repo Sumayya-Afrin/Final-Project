@@ -1,1 +1,43 @@
-<p>crafts works!</p>
+<mat-card class="craft-container">
+  <img
+    src="{{ craft.imageUrl }}"
+    alt="{{ craft.title }}-craft-poster"
+    class="craft-poster"
+  />
+  <mat-card-content>
+    <div class="craft-spec">
+      <h2 class="craft-title">
+        {{ craft.title }}
+        <button
+          mat-icon-button
+          aria-label="Toggle Summary"
+          (click)="showDescription()"
+        >
+          <mat-icon>{{
+            show ? "keyboard_arrow_up" : "keyboard_arrow_down"
+          }}</mat-icon>
+        </button>
+        <!-- <p class="movie-rating">⭐{{ movie.rating }}</p> -->
+
+        <button mat-icon-button aria-label="Details of craft">
+          <mat-icon>info</mat-icon>
+        </button>
+      </h2>
+      <p class="craft-category">⭐ {{ craft.category }}</p>
+    </div>
+
+    @if(show) {
+    <p class="craft-summary">
+      {{ craft.description }}
+    </p>
+    }
+    <div class="action-buttons-container">
+      <button mat-icon-button aria-label="Delete craft" (click)="deleteCraft()">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Edit Movie" (click)="editCraft()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,34 @@
+
+.craft-container{
+    overflow: hidden;
+    width: 300px;
+}
+.craft-spec{
+    display: flex;
+    justify-content: space-between;
+    align-items: center ;  
+}
+.craft-poster{
+    height: 450px;
+    width: 100%;
+   object-fit: cover;
+}
+
+ 
+.craft-category  {
+  font-size: 20px;
+
+}
+
+.craft-title{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.craft-category , .craft-title {
+  margin: 6px 0px;
+}
+.action-buttons-container{
+  display: flex;
+  justify-content: space-between;
+}

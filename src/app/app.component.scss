@@ -30,27 +30,3 @@ h1{
     text-align: center;
 }
 
-.intro-images
-{
-    display: flex;
-    flex-direction: column;
-    
-}
-
-.home-page > img
-{
-    height: 25rem;
-}
-
-@media(min-width : 500px )
-{
-    .intro-images
-{
-    display: flex;
-   
-    flex-direction: wrap;
-    gap: 2rem;
-    align-items: center;
-    
-}
-}
