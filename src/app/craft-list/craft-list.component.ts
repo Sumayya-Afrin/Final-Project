@@ -22,6 +22,7 @@ export class CraftListComponent {
   }
 
   loadCrafts() {
+    console.log('loading data..');
     this.craftService
       .getAllCrafts()
       .then((data) => {
