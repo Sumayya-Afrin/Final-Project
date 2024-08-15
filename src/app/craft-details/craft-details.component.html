@@ -1,0 +1,19 @@
+<div class="craft-container">
+  <div class="craft-content">
+    <div class="craft-spec">
+      <h2 class="craft-title">
+        {{ craft.title }}
+      </h2>
+
+      <img
+        src="{{ craft.imageUrl }}"
+        alt="{{ craft.title }}-craft-poster"
+        class="craft-poster"
+      />
+      <p class="craft-category">
+        <b> Craft - Category :</b> {{ craft.category }}
+      </p>
+    </div>
+    <p class="craft-summary">{{ craft.description }}</p>
+  </div>
+</div>

@@ -12,4 +12,10 @@ export class CraftService {
       (res) => res.json()
     );
   }
+
+  getCraftByIdP(id: string): Promise<ICraft> {
+    return fetch(
+      `https://66bd922a74dfc195586ce90a.mockapi.io/crafts/${id}`
+    ).then((res) => res.json());
+  }
 }
