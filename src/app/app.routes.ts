@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { CraftListComponent } from './craft-list/craft-list.component';
 import { CraftDetailsComponent } from './craft-details/craft-details.component';
 import { AddComponent } from './add/add.component';
+import { EditCraftComponent } from './edit-craft/edit-craft.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,10 @@ export const routes: Routes = [
       {
         path: 'add',
         component: AddComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: EditCraftComponent,
       },
       {
         path: ':id',

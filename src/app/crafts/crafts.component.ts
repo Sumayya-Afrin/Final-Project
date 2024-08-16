@@ -34,19 +34,23 @@ export class CraftsComponent {
 
   @Input() craft!: ICraft;
   @Output() deleteCraftEvent = new EventEmitter<any>();
+  @Output() updateCraftEvent = new EventEmitter<any>();
 
   isLoading: boolean = true;
   msg = '';
 
   show = true;
-  editCraft() {
-    throw new Error('Method not implemented.');
-  }
+
   deleteCraft() {
     console.log('Button clicked...');
     this.deleteCraftEvent.emit(this.craft);
   }
   showDescription() {
     this.show = this.show ? false : true;
+  }
+
+  editCraft() {
+    console.log('edit');
+    this.updateCraftEvent.emit(this.craft);
   }
 }

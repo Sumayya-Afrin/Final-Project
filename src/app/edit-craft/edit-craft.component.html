@@ -1,1 +1,64 @@
-<p>edit-craft works!</p>
+<form [formGroup]="craftsForm" class="edit-craft-form">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input
+      matInput
+      placeholder=" Ex: Handmade wooden bowl"
+      formControlName="title"
+    />
+
+    @if(title?.touched && title?.hasError('required') ){
+    <mat-error>Title is <strong>required</strong></mat-error>
+    } @if(title?.touched && title?.hasError('minlength') ){
+    <mat-error>Please provide a clear title for your craft</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input
+      matInput
+      placeholder="Write a description"
+      formControlName="description"
+    />
+    @if(description?.touched && description?.hasError('required') ){
+    <mat-error>Description is <strong>required</strong></mat-error>
+    } @if(description?.touched && description?.hasError('minlength') ){
+    <mat-error>description is <strong>too short 🥲</strong></mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Category</mat-label>
+    <input matInput placeholder="Ex : Pottery" formControlName="category" />
+    @if(category?.touched && category?.hasError('required') ){
+    <mat-error>Category is <strong>required</strong></mat-error
+    >}
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Price</mat-label>
+    <input type="number" matInput placeholder="8" formControlName="price" />
+
+    @if(price?.touched && price?.hasError('required') ){
+    <mat-error>Rating is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Image URL </mat-label>
+    <input matInput placeholder="http://" formControlName="imageUrl" />
+    @if(imageUrl?.touched && imageUrl?.hasError('required') ){
+    <mat-error>ImageUrl is <strong>required</strong></mat-error
+    >}
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    type="submit"
+    style="color: white; background-color: #198e19"
+    (ngSubmit)="onSave()"
+  >
+    Save
+  </button>
+</form>
