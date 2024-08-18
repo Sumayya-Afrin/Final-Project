@@ -42,6 +42,7 @@ export class EditCraftComponent {
 
     // formGroup -> formControlName
     this.craftsForm = this.fb.group({
+      id: '',
       title: ['', [Validators.required, Validators.minLength(2)]],
       description: ['', [Validators.required]],
       category: ['', [Validators.required]],
@@ -56,8 +57,6 @@ export class EditCraftComponent {
     this.craftService
       .getCraftByIdP(id)
       .then((data) => {
-        this.craft = data;
-        this.craftId = data.id;
         this.craftsForm.patchValue(data);
       })
       .catch(() => {
@@ -65,23 +64,22 @@ export class EditCraftComponent {
       });
   }
 
-  onSave() {
+  editCrafts() {
     console.log('saving...');
+    console.log(this.craftsForm.value);
     if (this.craftsForm.valid) {
-      const updatedCraft: ICraft = { ...this.craft, ...this.craftsForm.value };
-      if (this.craftId) {
-        this.craftService
-          .updateCraftsInfo(this.craftId, updatedCraft)
-          .then(() => {
-            this.router.navigate(['/Crafts']);
-          })
-          .catch((error) => {
-            console.log('Update failed');
-            this.msg = 'Failed to update the craft data';
-          });
-      }
-    } else {
-      this.msg = 'Invalid Form';
+      const updatedCraft: ICraft = this.craftsForm.value;
+      console.log(this.craftsForm.value);
+
+      this.craftService
+        .updateCraftsInfo(updatedCraft)
+        .then(() => {
+          this.router.navigate(['Crafts']);
+        })
+        .catch((error) => {
+          console.log('Update failed');
+          this.msg = 'Failed to update the craft data';
+        });
     }
   }
 

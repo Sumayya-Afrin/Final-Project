@@ -39,14 +39,17 @@ export class CraftService {
     ).then((res) => res.json());
   }
 
-  updateCraftsInfo(id: string, updatedCraft: ICraft): Promise<ICraft> {
+  updateCraftsInfo(updatedCraft: ICraft) {
     console.log('updating...');
-    return fetch(`https://66bd922a74dfc195586ce90a.mockapi.io/crafts/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(updatedCraft),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then((res) => res.json());
+    return fetch(
+      `https://66bd922a74dfc195586ce90a.mockapi.io/crafts/${updatedCraft.id}`,
+      {
+        method: 'PUT',
+        body: JSON.stringify(updatedCraft),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    ).then((res) => res.json());
   }
 }

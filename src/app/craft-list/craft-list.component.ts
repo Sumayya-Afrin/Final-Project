@@ -3,6 +3,7 @@ import { ICraft } from '../app.component';
 import { CraftService } from '../craft.service';
 import { CraftsComponent } from '../crafts/crafts.component';
 import { SearchCraftComponent } from '../search-craft/search-craft.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-craft-list',
@@ -17,7 +18,7 @@ export class CraftListComponent {
   msg = '';
   $craft: any;
 
-  constructor(public craftService: CraftService) {}
+  constructor(public craftService: CraftService, private router: Router) {}
 
   ngOnInit() {
     this.loadCrafts();
@@ -37,8 +38,13 @@ export class CraftListComponent {
       });
   }
 
-  deleteCraftP(craft: any) {
+  deleteCraftP(craft: ICraft) {
     console.log('deleting...');
     this.craftService.deleteCraftById(craft).then(() => this.loadCrafts());
+  }
+
+  editCraftP(craft: ICraft) {
+    console.log('navigating....');
+    this.router.navigate(['Crafts', 'edit', craft.id]);
   }
 }
