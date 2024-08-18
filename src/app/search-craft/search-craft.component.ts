@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, switchMap, catchError, of } from 'rxjs';
 
@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
+import { CraftsComponent } from '../crafts/crafts.component';
 import { ICraft } from '../app.component';
 
 @Component({
@@ -22,17 +23,12 @@ import { ICraft } from '../app.component';
     RouterLink,
     MatButtonModule,
     MatIconModule,
+    CraftsComponent,
   ],
   templateUrl: './search-craft.component.html',
   styleUrl: './search-craft.component.scss',
 })
 export class SearchCraftComponent {
-  editCraft() {
-    throw new Error('Method not implemented.');
-  }
-  deleteCraft() {
-    throw new Error('Method not implemented.');
-  }
   searchCraft!: FormGroup;
   crafts: any;
   constructor(private craftService: SerachService, private fb: FormBuilder) {
