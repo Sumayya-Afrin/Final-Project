@@ -37,7 +37,10 @@ export class LoginComponent {
     });
   }
   userLogin() {
-    throw new Error('Method not implemented.');
+    console.log(this.loginForm.value);
+    this.loginService.login(this.loginForm.value).then((data) => {
+      localStorage.setItem('token', data.token);
+    });
   }
   get username() {
     return this.loginForm.get('username');
