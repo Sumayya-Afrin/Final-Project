@@ -10,7 +10,7 @@ export class CraftService {
   constructor() {}
 
   addCraftSer(newCraft: NewCraft) {
-    return fetch(`${API}`, {
+    return fetch(`${API}/Crafts`, {
       method: 'POST',
       body: JSON.stringify(newCraft),
       headers: {
@@ -20,22 +20,22 @@ export class CraftService {
   }
 
   getAllCrafts(): Promise<ICraft[]> {
-    return fetch(`${API}`).then((res) => res.json());
+    return fetch(`${API}/Crafts`).then((res) => res.json());
   }
 
   getCraftByIdP(id: string): Promise<ICraft> {
-    return fetch(`${API}/${id}`).then((res) => res.json());
+    return fetch(`${API}/Crafts/${id}`).then((res) => res.json());
   }
 
   deleteCraftById(craft: any) {
-    return fetch(`${API}/${craft.id}`, {
+    return fetch(`${API}/Crafts/del/${craft.id}`, {
       method: 'DELETE',
     }).then((res) => res.json());
   }
 
   updateCraftsInfo(updatedCraft: ICraft) {
     console.log('updating...');
-    return fetch(`${API}/${updatedCraft.id}`, {
+    return fetch(`${API}/Crafts/${updatedCraft.id}`, {
       method: 'PUT',
       body: JSON.stringify(updatedCraft),
       headers: {

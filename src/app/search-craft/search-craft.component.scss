@@ -1,47 +1,42 @@
-.search-bar
-{
-   text-align: center;
-   margin: 2.5rem 2.5rem;
-   
-}
 
-
-.craft-container{
-    overflow: hidden;
-    width: 300px;
-}
-.craft-spec{
-    display: flex;
-    justify-content: space-between;
-    align-items: center ;  
-   
-}
-.craft-poster{
-    height: 450px;
-    width: 100%;
-   object-fit: cover;
-}
-
- 
-.craft-category  {
-  font-size: 20px;
-
-}
-
-.craft-title{
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.craft-category , .craft-title {
-  margin: 6px 0px;
-}
-.action-buttons-container{
+.search-bar {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9; 
+  border-radius: 30px; 
+  border: 1px solid #ddd; 
+  padding: 5px 15px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  max-width: 350px; 
+  margin: 0 auto; 
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.craft-category{
-    display: flex;
-    justify-content: space-between;
+/* Search Input */
+.search-input {
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 30px;
+  width: 100%; 
+  background-color: transparent; /* Transparent background */
+  color: #333; 
+}
+
+
+.search-icon {
+  color: black; 
+  font-size: 18px;
+  margin-left: 10px; 
+  cursor: pointer; 
+}
+
+.search-bar:hover {
+  border-color: #ff00ee; 
+}
+
+.search-bar .search-input::placeholder {
+  color: #aaa; 
 }
