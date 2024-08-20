@@ -1,0 +1,18 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Inter:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Mukta:wght@200;300;400;500;600;700;800&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+  rel="stylesheet"
+/>
+<h1 class="dialog-title">Confirm Action</h1>
+<div class="dialog-content">
+  <p>Are you sure you want to proceed with this action?</p>
+</div>
+<div class="dialog-actions">
+  <button class="dialog-button cancel-button" (click)="onCancel()">
+    Cancel
+  </button>
+  <button class="dialog-button confirm-button" (click)="onConfirm()">
+    Confirm
+  </button>
+</div>

@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICraft } from '../app.component';
 import { CraftService } from '../craft.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-edit-craft',
   standalone: true,
@@ -36,13 +37,14 @@ export class EditCraftComponent {
     public craftService: CraftService,
     private router: Router,
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {
     // this.craftList = this.craftService.getAllCrafts(cr);
 
     // formGroup -> formControlName
     this.craftsForm = this.fb.group({
-      id: '',
+      craftId: '',
       title: ['', [Validators.required, Validators.minLength(2)]],
       description: ['', [Validators.required]],
       category: ['', [Validators.required]],
@@ -69,18 +71,29 @@ export class EditCraftComponent {
     console.log(this.craftsForm.value);
     if (this.craftsForm.valid) {
       const updatedCraft: ICraft = this.craftsForm.value;
+      console.log('form values');
       console.log(this.craftsForm.value);
 
       this.craftService
         .updateCraftsInfo(updatedCraft)
         .then(() => {
           this.router.navigate(['Crafts']);
+          this.showSnackBar('Craft updated successfully!', 'Close');
         })
         .catch((error) => {
           console.log('Update failed');
           this.msg = 'Failed to update the craft data';
+          this.showSnackBar('Failed to update the craft data', 'Close');
         });
     }
+  }
+
+  showSnackBar(message: string, action: string = 'Close') {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+    });
   }
 
   get title() {

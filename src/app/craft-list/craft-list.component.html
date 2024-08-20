@@ -1,15 +1,16 @@
 <!-- <app-search-craft></app-search-craft> -->
-<form [formGroup]="searchCraft" class="search-bar">
-  <input
-    type="search"
-    placeholder="search crafts..."
-    formControlName="search"
-    class="search-input"
-  />
-  <i class="fa-solid fa-magnifying-glass"></i>
-</form>
-
-<!-- <button routerLink="/Crafts/{{ craftList.id }}">Add Your Craft</button> -->
+<div class="serch-add">
+  <form [formGroup]="searchCraft" class="search-bar">
+    <input
+      type="search"
+      placeholder="search crafts..."
+      formControlName="search"
+      class="search-input"
+    />
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <button mat-button routerLink="/Crafts/add">➕</button>
+  </form>
+</div>
 
 <section class="craft-list-container">
   @if(isLoading){

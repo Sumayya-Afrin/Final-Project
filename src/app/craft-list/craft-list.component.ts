@@ -4,16 +4,33 @@ import { CraftService } from '../craft.service';
 import { CraftsComponent } from '../crafts/crafts.component';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-
+import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, switchMap, catchError, of, startWith } from 'rxjs';
 import { error } from 'console';
 import { CommonModule } from '@angular/common';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @Component({
   selector: 'app-craft-list',
   standalone: true,
-  imports: [CraftsComponent, ReactiveFormsModule, CommonModule, RouterLink],
+  imports: [
+    CraftsComponent,
+    ReactiveFormsModule,
+    CommonModule,
+    RouterLink,
+    ConfirmDialogComponent,
+    MatBadgeModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatBadgeModule,
+  ],
   templateUrl: './craft-list.component.html',
   styleUrl: './craft-list.component.scss',
 })
@@ -28,7 +45,9 @@ export class CraftListComponent {
   constructor(
     public craftService: CraftService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
     this.searchCraft = this.fb.group({
       search: '',
@@ -74,13 +93,43 @@ export class CraftListComponent {
       });
   }
 
-  deleteCraftP(craft: ICraft) {
-    console.log('deleting...');
-    this.craftService.deleteCraftById(craft).then(() => this.loadCrafts());
+  openConfirmDialog(message: string): Promise<boolean> {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '250px',
+      data: { message },
+    });
+
+    return dialogRef.afterClosed().toPromise();
   }
 
-  editCraftP(craft: ICraft) {
-    console.log('navigating....');
-    this.router.navigate(['Crafts', 'edit', craft.craftId]);
+  showSnackBar(message: string, action: string = 'Close') {
+    this.snackBar.open(message, action, {
+      duration: 3000, // Duration in milliseconds
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+    });
+  }
+
+  async deleteCraftP(craft: ICraft) {
+    const confirmed = await this.openConfirmDialog(
+      'Are you sure you want to delete this craft?'
+    );
+    if (confirmed) {
+      console.log('deleting...');
+      this.craftService.deleteCraftById(craft).then(() => {
+        this.loadCrafts();
+        this.showSnackBar('Craft deleted successfully!');
+      });
+    }
+  }
+
+  async editCraftP(craft: ICraft) {
+    const confirmed = await this.openConfirmDialog(
+      'Are you sure you want to edit this craft?'
+    );
+    if (confirmed) {
+      console.log('navigating....');
+      this.router.navigate(['Crafts', 'edit', craft.craftId]);
+    }
   }
 }
