@@ -2,26 +2,60 @@ import { Component } from '@angular/core';
 import { ICraft } from '../app.component';
 import { CraftService } from '../craft.service';
 import { CraftsComponent } from '../crafts/crafts.component';
-import { SearchCraftComponent } from '../search-craft/search-craft.component';
+
 import { Router } from '@angular/router';
+
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime, switchMap, catchError, of, startWith } from 'rxjs';
+import { error } from 'console';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-craft-list',
   standalone: true,
-  imports: [CraftsComponent, SearchCraftComponent],
+  imports: [CraftsComponent, ReactiveFormsModule, CommonModule],
   templateUrl: './craft-list.component.html',
   styleUrl: './craft-list.component.scss',
 })
 export class CraftListComponent {
+  searchCraft!: FormGroup;
+  crafts: any = [];
   craftList: Array<ICraft> = [];
   isLoading: boolean = true;
   msg = '';
-  $craft: any;
+  // $craft: any;
 
-  constructor(public craftService: CraftService, private router: Router) {}
+  constructor(
+    public craftService: CraftService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
+    this.searchCraft = this.fb.group({
+      search: '',
+    });
+  }
 
   ngOnInit() {
     this.loadCrafts();
+
+    this.searchCraft
+      .get('search')
+      ?.valueChanges.pipe(
+        startWith(''),
+        debounceTime(300),
+        switchMap((searchTerm) =>
+          this.craftService.searchCraft(searchTerm).pipe(
+            catchError((error) => {
+              console.log(error);
+              return of([]);
+            })
+          )
+        )
+      )
+      .subscribe((data) => {
+        console.log(data);
+        this.crafts = data;
+      });
   }
 
   loadCrafts() {

@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { ICraft } from './app.component';
 import { NewCraft } from '../../craft';
 import { API } from '../../global';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CraftService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   addCraftSer(newCraft: NewCraft) {
     return fetch(`${API}/Crafts`, {
@@ -42,5 +43,11 @@ export class CraftService {
         'Content-Type': 'application/json',
       },
     }).then((res) => res.json());
+  }
+
+  searchCraft(searchTerm: string): any {
+    return this.http.get<ICraft[]>(
+      `https://66bd922a74dfc195586ce90a.mockapi.io/crafts?search=${searchTerm}`
+    );
   }
 }

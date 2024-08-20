@@ -8,7 +8,7 @@ import { CraftDetailsComponent } from './craft-details/craft-details.component';
 import { AddComponent } from './add/add.component';
 import { EditCraftComponent } from './edit-craft/edit-craft.component';
 import { LoginComponent } from './login/login.component';
-import { SearchCraftComponent } from './search-craft/search-craft.component';
+
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 

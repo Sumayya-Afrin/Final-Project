@@ -1,4 +1,22 @@
-<app-search-craft></app-search-craft>
+<!-- <app-search-craft></app-search-craft> -->
+<form [formGroup]="searchCraft" class="search-bar">
+  <input
+    type="search"
+    placeholder="search crafts..."
+    formControlName="search"
+    class="search-input"
+  />
+  <i class="fa-solid fa-magnifying-glass"></i>
+</form>
+
+<div *ngIf="isLoading" class="loading">
+  <h3 style="font-weight: bolder">Loading...</h3>
+</div>
+
+<div *ngIf="!isLoading && crafts.length == 0" class="no-results">
+  No results found
+</div>
+
 <section class="craft-list-container">
   @if(isLoading){
   <h1>Loading ⌛</h1>
