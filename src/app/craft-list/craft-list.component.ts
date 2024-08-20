@@ -66,7 +66,8 @@ export class CraftListComponent {
         this.craftList = data;
         this.isLoading = false;
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error);
         this.isLoading = false;
         this.msg = 'Something went wrong 🥲';
       });

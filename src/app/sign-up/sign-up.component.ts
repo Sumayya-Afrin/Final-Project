@@ -33,9 +33,7 @@ export class SignUpComponent {
     });
   }
 
-  usersignUp() {
-    throw new Error('Method not implemented.');
-  }
+  usersignUp() {}
 
   get username() {
     return this.signupForm.get('username');

@@ -14,13 +14,13 @@
 </div>
 
 <div *ngIf="!isLoading && crafts.length == 0" class="no-results">
-  No results found
+  <h1>No results found 🥲</h1>
 </div>
 
 <section class="craft-list-container">
   @if(isLoading){
   <h1>Loading ⌛</h1>
-  } @for (craft of craftList; track $index){
+  } @for (craft of crafts; track $index){
   <app-crafts
     [craft]="craft"
     (deleteCraftEvent)="deleteCraftP($event)"
