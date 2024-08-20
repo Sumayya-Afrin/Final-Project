@@ -19,7 +19,7 @@
       <button
         mat-icon-button
         aria-label="Details of craft"
-        routerLink="Crafts/{{ craft.id }}"
+        routerLink="/Crafts/{{ craft.id }}"
       >
         <mat-icon>info</mat-icon>
       </button>
@@ -61,6 +61,10 @@
         style="color: rgb(12, 34, 175)"
       >
         <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-icon-button style="color: rgb(12, 34, 175)">
+        <mat-icon><i class="fa-solid fa-cart-shopping"></i></mat-icon>
       </button>
     </div>
   </mat-card-content>

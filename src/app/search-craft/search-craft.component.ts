@@ -37,11 +37,6 @@ export class SearchCraftComponent {
     });
   }
 
-  show = true;
-  showDescription1() {
-    this.show = this.show ? false : true;
-  }
-
   ngOnInit() {
     this.searchCraft
       .get('search')

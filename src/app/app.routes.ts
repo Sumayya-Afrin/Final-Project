@@ -10,10 +10,12 @@ import { EditCraftComponent } from './edit-craft/edit-craft.component';
 import { LoginComponent } from './login/login.component';
 import { SearchCraftComponent } from './search-craft/search-craft.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignUpComponent },
   {
     path: 'Crafts',
     children: [
@@ -35,9 +37,5 @@ export const routes: Routes = [
         component: CraftDetailsComponent,
       },
     ],
-  },
-  {
-    path: '**',
-    component: PageNotFoundComponent,
   },
 ];
