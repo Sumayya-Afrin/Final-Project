@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { LoginServiceService } from '../login-service.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,8 @@ export class LoginComponent {
   constructor(
     public loginService: LoginServiceService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar
   ) {
     // formGroup -> formControlName
     this.loginForm = this.fb.group({
@@ -36,12 +38,42 @@ export class LoginComponent {
       password: '',
     });
   }
+  // login() {
+  //   console.log(this.loginForm.value);
+  //   this.loginService.login(this.loginForm.value).then((data) => {
+  //     localStorage.setItem('token', data.token);
+  //     this.router.navigate(['/Crafts']);
+  //   });
+  // }
+
   login() {
-    console.log(this.loginForm.value);
-    this.loginService.login(this.loginForm.value).then((data) => {
-      localStorage.setItem('token', data.token);
-      this.router.navigate(['/Crafts']);
-    });
+    if (this.loginForm.valid) {
+      this.loginService
+        .login(this.loginForm.value)
+        .then((data) => {
+          localStorage.setItem('token', data.token);
+          this.snackBar.open('Login successful!', 'Close', {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center',
+          });
+          this.router.navigate(['/Crafts']);
+        })
+        .catch((error) => {
+          this.snackBar.open('Login failed. Please try again.', 'Close', {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center',
+          });
+          console.error('Login error:', error);
+        });
+    } else {
+      this.snackBar.open('Please fill out the form correctly.', 'Close', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center',
+      });
+    }
   }
   get username() {
     return this.loginForm.get('username');

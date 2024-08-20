@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginServiceService } from '../login-service.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
@@ -28,7 +28,8 @@ export class SignUpComponent {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private loginService: LoginServiceService
+    private loginService: LoginServiceService,
+    private snackBar: MatSnackBar
   ) {
     // formGroup -> formControlName
     this.signupForm = this.fb.group({
@@ -38,11 +39,35 @@ export class SignUpComponent {
     });
   }
 
+  // usersignUp() {
+  //   console.log(this.signupForm.value);
+  //   this.loginService.signup(this.signupForm.value).then((data) => {
+  //     this.router.navigate(['/login']);
+  //   });
+  // }
+
   usersignUp() {
-    console.log(this.signupForm.value);
-    this.loginService.signup(this.signupForm.value).then((data) => {
-      this.router.navigate(['/login']);
-    });
+    if (this.signupForm.valid) {
+      this.loginService
+        .signup(this.signupForm.value)
+        .then((data) => {
+          this.snackBar.open('Sign-up completed successfully!', 'Close', {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center',
+          });
+          this.router.navigate(['/login']);
+        })
+        .catch((error) => {
+          console.error('Sign-up error:', error);
+        });
+    } else {
+      this.snackBar.open('Please fill out the form correctly.', 'Close', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center',
+      });
+    }
   }
 
   get username() {
