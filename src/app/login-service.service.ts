@@ -15,8 +15,18 @@ export interface TokenResponse {
 export class LoginServiceService {
   constructor() {}
 
-  login(credentials: User): Promise<TokenResponse> {
+  async login(credentials: User): Promise<TokenResponse> {
     return fetch(`${API}/users/loginuser`, {
+      method: 'POST',
+      body: JSON.stringify(credentials),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    }).then((res) => res.json());
+  }
+
+  async signup(credentials: User): Promise<TokenResponse> {
+    return fetch(`${API}/users/newuser`, {
       method: 'POST',
       body: JSON.stringify(credentials),
       headers: {

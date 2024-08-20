@@ -9,23 +9,17 @@
   <i class="fa-solid fa-magnifying-glass"></i>
 </form>
 
-<div *ngIf="isLoading" class="loading">
-  <h3 style="font-weight: bolder">Loading...</h3>
-</div>
-
-<div *ngIf="!isLoading && crafts.length == 0" class="no-results">
-  <h1>No results found 🥲</h1>
-</div>
+<!-- <button routerLink="/Crafts/{{ craftList.id }}">Add Your Craft</button> -->
 
 <section class="craft-list-container">
   @if(isLoading){
   <h1>Loading ⌛</h1>
-  } @for (craft of crafts; track $index){
+  } @for (craft of craftList; track $index){
   <app-crafts
     [craft]="craft"
     (deleteCraftEvent)="deleteCraftP($event)"
     (updateCraftEvent)="editCraftP($event)"
-    [id]="craft.id"
+    [id]="craft.craftId"
   />
   }
 </section>

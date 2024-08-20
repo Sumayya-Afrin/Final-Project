@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginServiceService } from '../login-service.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -24,7 +25,11 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent {
   signupForm!: FormGroup;
-  constructor(private router: Router, private fb: FormBuilder) {
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private loginService: LoginServiceService
+  ) {
     // formGroup -> formControlName
     this.signupForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
@@ -33,7 +38,12 @@ export class SignUpComponent {
     });
   }
 
-  usersignUp() {}
+  usersignUp() {
+    console.log(this.signupForm.value);
+    this.loginService.signup(this.signupForm.value).then((data) => {
+      this.router.navigate(['/login']);
+    });
+  }
 
   get username() {
     return this.signupForm.get('username');

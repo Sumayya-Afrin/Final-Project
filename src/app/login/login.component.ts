@@ -36,10 +36,11 @@ export class LoginComponent {
       password: '',
     });
   }
-  userLogin() {
+  login() {
     console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value).then((data) => {
       localStorage.setItem('token', data.token);
+      this.router.navigate(['/Crafts']);
     });
   }
   get username() {

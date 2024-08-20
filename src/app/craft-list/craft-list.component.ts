@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ICraft } from '../app.component';
 import { CraftService } from '../craft.service';
 import { CraftsComponent } from '../crafts/crafts.component';
-
+import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -13,14 +13,14 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-craft-list',
   standalone: true,
-  imports: [CraftsComponent, ReactiveFormsModule, CommonModule],
+  imports: [CraftsComponent, ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './craft-list.component.html',
   styleUrl: './craft-list.component.scss',
 })
 export class CraftListComponent {
   searchCraft!: FormGroup;
   crafts: any = [];
-  craftList: Array<ICraft> = [];
+  craftList: any = [];
   isLoading: boolean = true;
   msg = '';
   // $craft: any;
@@ -53,6 +53,7 @@ export class CraftListComponent {
         )
       )
       .subscribe((data) => {
+        console.log('search function...');
         console.log(data);
         this.crafts = data;
       });
@@ -80,6 +81,6 @@ export class CraftListComponent {
 
   editCraftP(craft: ICraft) {
     console.log('navigating....');
-    this.router.navigate(['Crafts', 'edit', craft.id]);
+    this.router.navigate(['Crafts', 'edit', craft.craftId]);
   }
 }

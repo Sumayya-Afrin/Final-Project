@@ -28,15 +28,15 @@ export class CraftService {
     return fetch(`${API}/crafts/${id}`).then((res) => res.json());
   }
 
-  deleteCraftById(craft: any) {
-    return fetch(`${API}/crafts/${craft.id}`, {
+  deleteCraftById(craft: ICraft) {
+    return fetch(`${API}/crafts/del/${craft.craftId}`, {
       method: 'DELETE',
     }).then((res) => res.json());
   }
 
   updateCraftsInfo(updatedCraft: ICraft) {
     console.log('updating...');
-    return fetch(`${API}/crafts/${updatedCraft.id}`, {
+    return fetch(`${API}/crafts/${updatedCraft.craftId}`, {
       method: 'PUT',
       body: JSON.stringify(updatedCraft),
       headers: {
@@ -46,8 +46,6 @@ export class CraftService {
   }
 
   searchCraft(searchTerm: string): any {
-    return this.http.get<ICraft[]>(
-      `https://66bd922a74dfc195586ce90a.mockapi.io/crafts?search=${searchTerm}`
-    );
+    return this.http.get<ICraft[]>(`${API}?search=${searchTerm}`);
   }
 }

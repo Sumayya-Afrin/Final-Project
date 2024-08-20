@@ -47,3 +47,19 @@
     line-height: 1.5; 
   }
   
+  .price-tag {
+    display: inline-block;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .amount {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+  }
+  

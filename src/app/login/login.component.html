@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" (ngSubmit)="userLogin()" class="login-form">
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
   <mat-form-field>
     <mat-label> Username</mat-label>
     <input matInput placeholder="Username" formControlName="username" />
@@ -21,4 +21,5 @@
   >
     Login
   </button>
+  <p>New User ? <a href="/signup">Sign-up Here</a></p>
 </form>

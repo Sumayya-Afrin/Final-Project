@@ -11,7 +11,7 @@ export interface ICraft {
   category: string;
   price: string;
   imageUrl: string;
-  id: number;
+  craftId: number;
 }
 
 @Component({
