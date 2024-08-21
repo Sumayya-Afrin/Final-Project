@@ -46,6 +46,22 @@ export class CraftService {
   }
 
   searchCraft(searchTerm: string): any {
-    return this.http.get<ICraft[]>(`${API}?search=${searchTerm}`);
+    return this.http.get<ICraft[]>(`${API}/crafts?search=${searchTerm}`);
+  }
+
+  addProduct(craft: any) {
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const existingProductIndex = cart.findIndex(
+      (i: { craftId: any }) => craft.bookId === i.craftId
+    );
+
+    if (existingProductIndex !== -1) {
+      cart[existingProductIndex].qty += 1; // Update quantity if the product is already in the cart
+    } else {
+      // Initialize quantity
+      cart.push(craft); // Add new product to cart
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart to localStorage
   }
 }

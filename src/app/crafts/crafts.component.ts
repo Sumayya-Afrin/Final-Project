@@ -6,6 +6,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ICraft } from '../app.component';
 import { CraftService } from '../craft.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-crafts',
@@ -41,6 +44,13 @@ export class CraftsComponent {
 
   show = true;
 
+  constructor(
+    public craftservice: CraftService,
+    private route: ActivatedRoute,
+    public router: Router,
+    private snackBar: MatSnackBar
+  ) {}
+
   deleteCraft() {
     console.log('Button clicked...');
     this.deleteCraftEvent.emit(this.craft);
@@ -52,5 +62,9 @@ export class CraftsComponent {
   editCraft() {
     console.log('edit');
     this.updateCraftEvent.emit(this.craft);
+  }
+
+  addToCart() {
+    this.craftservice.addProduct(this.craft);
   }
 }

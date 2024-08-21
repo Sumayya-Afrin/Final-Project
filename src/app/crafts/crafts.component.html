@@ -63,7 +63,11 @@
         <mat-icon>edit</mat-icon>
       </button>
 
-      <button mat-icon-button style="color: rgb(12, 34, 175)">
+      <button
+        mat-icon-button
+        style="color: rgb(12, 34, 175)"
+        (click)="addToCart()"
+      >
         <mat-icon><i class="fa-solid fa-cart-shopping"></i></mat-icon>
       </button>
     </div>
