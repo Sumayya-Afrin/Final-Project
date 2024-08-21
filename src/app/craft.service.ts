@@ -8,6 +8,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CraftService {
+  gettingCart(): any {
+    throw new Error('Method not implemented.');
+  }
   constructor(private http: HttpClient) {}
 
   addCraftSer(newCraft: NewCraft) {
@@ -52,7 +55,7 @@ export class CraftService {
   addProduct(craft: any) {
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const existingProductIndex = cart.findIndex(
-      (i: { craftId: any }) => craft.bookId === i.craftId
+      (i: { craftId: any }) => craft.craftId === i.craftId
     );
 
     if (existingProductIndex !== -1) {
