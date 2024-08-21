@@ -36,7 +36,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 })
 export class CraftListComponent {
   searchCraft!: FormGroup;
-  crafts: any = [];
+  // crafts: any = [];
   craftList: any = [];
   isLoading: boolean = true;
   msg = '';
@@ -74,7 +74,7 @@ export class CraftListComponent {
       .subscribe((data) => {
         console.log('search function...');
         console.log(data);
-        this.crafts = data;
+        this.craftList = data;
       });
   }
 

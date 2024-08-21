@@ -10,10 +10,12 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { authGuard } from '../../auth.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+
+  { path: 'loginUser', component: LoginComponent },
 
   { path: 'signup', component: SignUpComponent },
   {
@@ -22,6 +24,7 @@ export const routes: Routes = [
       {
         path: '',
         component: CraftListComponent,
+        canActivate: [authGuard],
       },
 
       {

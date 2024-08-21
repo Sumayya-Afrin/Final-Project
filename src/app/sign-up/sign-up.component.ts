@@ -11,6 +11,7 @@ import {
 import { Router } from '@angular/router';
 import { LoginServiceService } from '../login-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatCard } from '@angular/material/card';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
@@ -19,6 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatCard,
   ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',

@@ -1,25 +1,27 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
-  <mat-form-field>
-    <mat-label> Username</mat-label>
-    <input matInput placeholder="Username" formControlName="username" />
+<mat-card class="login-box">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+    <mat-form-field>
+      <mat-label> Username</mat-label>
+      <input matInput placeholder="Username" formControlName="username" />
 
-    @if(username?.touched && username?.hasError('required') ){
-    <mat-error>Name is <strong>required</strong></mat-error>
-    } @if(username?.touched && username?.hasError('minlength') ){
-    <mat-error>Please provide full username </mat-error>
-    }
-  </mat-form-field>
+      @if(username?.touched && username?.hasError('required') ){
+      <mat-error>Name is <strong>required</strong></mat-error>
+      } @if(username?.touched && username?.hasError('minlength') ){
+      <mat-error>Please provide full username </mat-error>
+      }
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label> Password</mat-label>
-    <input matInput placeholder="Password" formControlName="password" />
-  </mat-form-field>
-  <button
-    mat-raised-button
-    type="submit"
-    style="background-color: #9b1c93; color: white"
-  >
-    Login
-  </button>
-  <p>New User ? <a href="/signup">Sign-up Here</a></p>
-</form>
+    <mat-form-field>
+      <mat-label> Password</mat-label>
+      <input matInput placeholder="Password" formControlName="password" />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      type="submit"
+      style="background-color: #9b1c93; color: white"
+    >
+      Login
+    </button>
+    <p>New User ? <a href="/signup">Sign-up Here</a></p>
+  </form>
+</mat-card>

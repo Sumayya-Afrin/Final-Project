@@ -11,6 +11,7 @@ import {
 import { LoginServiceService } from '../login-service.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatCard } from '@angular/material/card';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatCard,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -51,6 +53,7 @@ export class LoginComponent {
       this.loginService
         .login(this.loginForm.value)
         .then((data) => {
+          console.log(this.loginForm.value); //printing password & username
           localStorage.setItem('token', data.token);
           this.snackBar.open('Login successful!', 'Close', {
             duration: 3000,

@@ -45,8 +45,8 @@ export class CraftService {
     }).then((res) => res.json());
   }
 
-  searchCraft(searchTerm: string): any {
-    return this.http.get<ICraft[]>(`${API}/crafts?search=${searchTerm}`);
+  searchCraft(searchTerm: string) {
+    return this.http.get(`${API}/crafts?search=${searchTerm}`);
   }
 
   addProduct(craft: any) {
