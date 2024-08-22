@@ -1,35 +1,78 @@
-<div class="container">
-  <h1>
-    Discover the art of blending classic techniques with modern vision in
-    handcrafted treasures.
-  </h1>
-  <!-- <mat-card>
-    <div class="image">
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShVrVDgxlP2J2xQhv3-Lm_vziy73YUKBSuyQ&s"
-        alt="Arts and Crafts"
-      />
-    </div>
-  </mat-card> -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap"
+  rel="stylesheet"
+/>
 
-  <div class="intro-images">
-    <div class="home-page">
-      <img
-        src="https://5.imimg.com/data5/ANDROID/Default/2022/7/OI/IH/IU/156190139/prod-20220725-1037521382398187620809242-jpg-500x500.jpg"
-        alt="Craft Image 1"
-      />
-    </div>
-    <div class="home-page">
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjpE9Zy-PRqSBMFwSv-PBryCNK1cY9N3VASpsuhzb0TBQn9qJ01aoUjX33yqn7uirqxtg&usqp=CAU"
-        alt="Craft Image 2"
-      />
-    </div>
-    <div class="home-page">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/William_Morris_design_for_Trellis_wallpaper_1862.jpg/800px-William_Morris_design_for_Trellis_wallpaper_1862.jpg"
-        alt="Craft Image 3"
-      />
-    </div>
-  </div>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Mukta:wght@200;300;400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+<img
+  class="intro-image"
+  src="https://everythingartandcraft.com/cdn/shop/files/Craft-Planet-Web-Banner.jpg?v=1704186441&width=1024"
+  alt="Arts&crfts"
+/>
+
+<h1 class="browse" style="text-align: center">About Everything Art & Craft</h1>
+
+<p style="font-family: Mukta; text-align: center; line-height: 2; color: grey">
+  Welcome to Craftopia! You've arrived at the ultimate destination for all your
+  art and craft inspiration. At Craftopia, we’re dedicated to helping you
+  unleash your creativity and explore your artistic potential. Our platform is
+  brimming with exciting ideas, expert tips, and engaging tutorials to guide you
+  through every step of your creative journey. Whether you’re here to discover
+  new techniques, connect with fellow crafters, or find the perfect materials
+  for your next project, Craftopia is your go-to source for all things art and
+  craft. Dive in and start crafting your next masterpiece today!
+</p>
+
+<h1 style="text-align: center" class="browse">Browse our collections</h1>
+<div class="dropdown-content">
+  <a routerLink="/categories/knitting">Knitting</a>
+  <a routerLink="/categories/painting">Painting</a>
+  <a routerLink="/categories/sculpture">Sculpture</a>
 </div>
+
+<mat-card>
+  <mat-card class="cards">
+    <div>
+      <img
+        src=" https://brownsheep.com/wp-content/uploads/2017/03/knittingyarn.jpg"
+        alt="Knitting"
+      />
+
+      <button mat-button style="font-family: Mukta" (click)="browseCategory()">
+        Knitting
+      </button>
+    </div>
+  </mat-card>
+
+  <mat-card class="cards">
+    <div>
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCI3Mi8EW4JsxJZjLhHkuWFerz0lukPkrm2g&s"
+        alt="Painting"
+      />
+      <button mat-button style="font-family: Mukta" (click)="browseCategory()">
+        Painting
+      </button>
+    </div>
+  </mat-card>
+
+  <mat-card class="cards">
+    <div>
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8ggX0ce6HlcEMlyHNKdYWs5RBDk1Hu3oFxA&s"
+        alt="sculpture"
+      />
+
+      <button mat-button style="font-family: Mukta" (click)="browseCategory()">
+        Sculpture
+      </button>
+    </div>
+  </mat-card>
+</mat-card>

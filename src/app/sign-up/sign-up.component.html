@@ -1,4 +1,12 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Mukta:wght@200;300;400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+
 <mat-card class="signup-box">
+  <h1 style="text-align: center" class="browse">Sign-up</h1>
   <form [formGroup]="signupForm" (ngSubmit)="usersignUp()" class="sign-form">
     <mat-form-field style="width: 300px">
       <mat-label> Username</mat-label>
@@ -28,6 +36,7 @@
       mat-raised-button
       type="submit"
       style="background-color: black; color: white"
+      class="browse"
     >
       Sign-up
     </button>

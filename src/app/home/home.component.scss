@@ -1,58 +1,120 @@
+
 body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f5f5f5;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.intro-image
+{
+  width: 100%;
+ max-height: 350px;
+}
+
+mat-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.browse
+{
+  font-family: Baskervville SC
+  ;
+
+  font-weight: 500;
+}
+
+mat-card :hover{
+
+  transform: scale(1.1);
+  transition: 1sec;
+
+}
+
+mat-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  
+}
+
+
+mat-card h1 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+mat-card p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #555;
+}
+
+
+mat-card > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 1rem;
+}
+
+mat-card > div img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+mat-card > div button {
+  background-color: #200a17;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+}
+
+mat-card > div button:hover {
+  background-color: #0056b3;
+}
+
+.cards
+{
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  mat-card {
+    padding: 15px;
   }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  h1 {
-    font-family: 'Jost', sans-serif;
-    font-weight: 700;
-    color: #333;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .image {
+
+  mat-card > div {
     display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  .intro-images {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  .intro-images .home-page {
-    flex: 1 1 calc(33% - 20px);
-    box-sizing: border-box;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  .intro-images .home-page img {
+
+
+
+  mat-card > div button {
     width: 100%;
-    height: auto;
-    display: block;
+    text-align: center;
   }
-  @media (max-width: 768px) {
-    .intro-images .home-page {
-      flex: 1 1 calc(50% - 20px);
-    }
-  }
-  @media (max-width: 480px) {
-    .intro-images .home-page {
-      flex: 1 1 100%;
-    }
-  }
+}

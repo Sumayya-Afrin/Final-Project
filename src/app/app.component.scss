@@ -1,35 +1,49 @@
+/* Add this CSS to your stylesheet */
 
-nav ul a{
-    text-decoration: none;
+.head {
+    background-color: #0d0f10; /* Light background color for the navbar */
+    padding: 1rem; /* Padding around the navbar */
+  }
+  
+  .header {
     display: flex;
-    color:white;
-    margin: 15px;
-    padding: 5px;
-
-}
-.head
-{
-    background: black;
-    height: 60px;
-    font-family: Roboto Condensed;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; 
+    // margin: 0 auto; /* Center the content */
+  }
+  
+  .header ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .header li {
+    margin: 0;
+  }
+  
+  .logo a {
+    color: white; /* Text color for the logo */
+    text-decoration: none;
+    font-size: 1rem;
    
-}
+  }
+  
+  .login-icon a {
+    color: white; /* Text color for the login icon */
+    text-decoration: none;
+  }
+  
+  .login-icon i {
+    font-size: 1.5rem; /* Adjust size of the icon as needed */
+  }
 
-
-nav ul
-{
-    justify-content: right;  
-        display: flex;
-        align-items: center;
-        list-style: none;
-        gap: 0.5rem;
-        margin-top: 0%;
-    padding: 0px;
-}
-
-h1{
-    font-family: Jost;
-    text-align: center;
+  .logo i{
+    color: white;
     
-}
-
+  }
+  

@@ -1,32 +1,43 @@
-<mat-card class="login-box">
-  <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
-    <mat-form-field style="width: 300px">
-      <mat-label> Username</mat-label>
-      <input matInput placeholder="Username" formControlName="username" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Mukta:wght@200;300;400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
 
-      @if(username?.touched && username?.hasError('required') ){
-      <mat-error>Name is <strong>required</strong></mat-error>
-      } @if(username?.touched && username?.hasError('minlength') ){
-      <mat-error>Please provide full username </mat-error>
-      }
-    </mat-form-field>
+<div class="container">
+  <mat-card class="login-box">
+    <h1 style="text-align: center" class="browse">Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+      <mat-form-field style="width: 300px">
+        <mat-label> Username</mat-label>
+        <input matInput placeholder="Username" formControlName="username" />
 
-    <mat-form-field>
-      <mat-label> Password</mat-label>
-      <input
-        matInput
-        placeholder="Password"
-        formControlName="password"
-        type="password"
-      />
-    </mat-form-field>
-    <button
-      mat-raised-button
-      type="submit"
-      style="background-color: black; color: white"
-    >
-      Login
-    </button>
-    <p>New User ? <a href="/signup">Sign-up Here</a></p>
-  </form>
-</mat-card>
+        @if(username?.touched && username?.hasError('required') ){
+        <mat-error>Name is <strong>required</strong></mat-error>
+        } @if(username?.touched && username?.hasError('minlength') ){
+        <mat-error>Please provide full username </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label> Password</mat-label>
+        <input
+          matInput
+          placeholder="Password"
+          formControlName="password"
+          type="password"
+        />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        type="submit"
+        style="background-color: black; color: white"
+        class="browse"
+      >
+        Login
+      </button>
+      <p class="browse">New User ? <a href="/signup">Sign-up Here</a></p>
+    </form>
+  </mat-card>
+</div>

@@ -10,10 +10,13 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { CategoryComponent } from './category/category.component';
 // import { authGuard } from '../../auth.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
+
+  { path: 'category/:categoryName', component: CategoryComponent },
 
   { path: 'loginUser', component: LoginComponent },
 
