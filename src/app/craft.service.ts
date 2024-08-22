@@ -19,6 +19,7 @@ export class CraftService {
       body: JSON.stringify(newCraft),
       headers: {
         'Content-type': 'application/json',
+        'x-auth-token': localStorage.getItem('token') || '',
       },
     }).then((res) => res.json());
   }
@@ -34,6 +35,10 @@ export class CraftService {
   deleteCraftById(craft: ICraft) {
     return fetch(`${API}/crafts/del/${craft.craftId}`, {
       method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json',
+        'x-auth-token': localStorage.getItem('token') || '',
+      },
     }).then((res) => res.json());
   }
 
@@ -44,6 +49,7 @@ export class CraftService {
       body: JSON.stringify(updatedCraft),
       headers: {
         'Content-Type': 'application/json',
+        'x-auth-token': localStorage.getItem('token') || '',
       },
     }).then((res) => res.json());
   }
