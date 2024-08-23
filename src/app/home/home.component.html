@@ -19,6 +19,8 @@
 
 <h1 class="browse" style="text-align: center">About Everything Art & Craft</h1>
 
+<hr width="10%" color="black" size="0px" align="center" />
+
 <p
   style="
     font-family: Mukta;
@@ -40,7 +42,9 @@
 
 <h1 style="text-align: center" class="browse">Browse our collections</h1>
 
-<mat-card>
+<hr width="10%" color="black" size="0px" align="center" />
+
+<div class="container">
   <mat-card class="cards">
     <div>
       <img
@@ -78,4 +82,69 @@
       </button>
     </div>
   </mat-card>
-</mat-card>
+
+  <mat-card class="cards">
+    <div>
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShPNUS_Uu3zigL0BW3-yHH3BXmK-GrgIuTX133bhkk4M-mSw3b4XpnYkNbDabgEnRqAa0&usqp=CAU"
+        alt="sculpture"
+      />
+
+      <button mat-button style="font-family: Mukta" (click)="browseCategory()">
+        Custom Art
+      </button>
+    </div>
+  </mat-card>
+
+  <mat-card class="cards">
+    <div>
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaqfW-qEvI_k-xUm1euwTPu84ft4tJbH7iGg&s"
+        alt="sculpture"
+      />
+
+      <button mat-button style="font-family: Mukta" (click)="browseCategory()">
+        Home Decor
+      </button>
+    </div>
+  </mat-card>
+
+  <mat-card class="cards">
+    <div>
+      <img
+        src="https://m.media-amazon.com/images/I/61z3G33oxTL._AC_UF1000,1000_QL80_.jpg"
+        alt="sculpture"
+      />
+
+      <button mat-button style="font-family: Mukta" (click)="browseCategory()">
+        Cards
+      </button>
+    </div>
+  </mat-card>
+
+  <mat-card class="cards">
+    <div>
+      <img
+        src="https://shop.vitcas.com/media/amasty/blog/cache/P/o/1000/690/Pottery-craft-ceramics.jpg"
+        alt="Ceramic Crafts"
+      />
+
+      <button mat-button style="font-family: Mukta" (click)="browseCategory()">
+        Ceramic Crafts
+      </button>
+    </div>
+  </mat-card>
+
+  <mat-card class="cards">
+    <div>
+      <img
+        src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/origami_butterflies-8406a40.jpg?quality=90&resize=556,505"
+        alt="Origami"
+      />
+
+      <button mat-button style="font-family: Mukta" (click)="browseCategory()">
+        Origami
+      </button>
+    </div>
+  </mat-card>
+</div>

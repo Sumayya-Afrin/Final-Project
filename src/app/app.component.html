@@ -39,9 +39,18 @@
         ></a>
       </li>
 
+      @if(loginservice.loginSuccess){
       <li class="login-icon">
         <a routerLink="/loginUser"><i class="fa-solid fa-user"></i></a>
       </li>
+      } @else {
+      <li class="login-icon">
+        <a routerLink="/logout"
+          ><i class="fa-solid fa-right-from-bracket"></i
+        ></a>
+      </li>
+
+      }
     </ul>
   </div>
 </nav>

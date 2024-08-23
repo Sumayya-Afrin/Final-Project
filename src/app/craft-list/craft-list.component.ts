@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-craft-list',
@@ -30,6 +31,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatIconModule,
     MatCardModule,
     MatBadgeModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './craft-list.component.html',
   styleUrl: './craft-list.component.scss',

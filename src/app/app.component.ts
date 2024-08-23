@@ -6,6 +6,7 @@ import { CraftListComponent } from './craft-list/craft-list.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { LoginServiceService } from './login-service.service';
 
 export interface ICraft {
   title: string;
@@ -34,4 +35,10 @@ export interface ICraft {
 })
 export class AppComponent {
   title = 'crafts-project';
+  constructor(public loginservice: LoginServiceService) {}
+  ngOnInit() {
+    if (localStorage.length > 0) {
+      this.loginservice.loginSuccess = true;
+    }
+  }
 }

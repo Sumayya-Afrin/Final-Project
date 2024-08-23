@@ -20,6 +20,8 @@ export const routes: Routes = [
 
   { path: 'loginUser', component: LoginComponent },
 
+  { path: 'logout', component: HomeComponent },
+
   { path: 'signup', component: SignUpComponent },
   {
     path: 'Crafts',

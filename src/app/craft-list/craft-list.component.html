@@ -10,21 +10,13 @@
       />
       <i class="fa-solid fa-magnifying-glass"></i>
       <button mat-button routerLink="/Crafts/add">➕</button>
-      <div class="dropdown">
-        <button class="dropbtn" (click)="toggleDropdown()">Filter</button>
-        <div class="dropdown-content" *ngIf="dropdownOpen">
-          <a (click)="applyFilter('knitting')">Knitting</a>
-          <a (click)="applyFilter('painting')">Painting</a>
-          <a (click)="applyFilter('sculpture')">Sculpture</a>
-        </div>
-      </div>
     </form>
   </div>
 </div>
 
 <section class="craft-list-container">
   @if(isLoading){
-  <h1>Loading ⌛</h1>
+  <mat-spinner></mat-spinner>
   } @for (craft of craftList; track $index){
   <app-crafts
     [craft]="craft"
