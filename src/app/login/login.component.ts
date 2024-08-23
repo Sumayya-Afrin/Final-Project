@@ -55,6 +55,9 @@ export class LoginComponent {
         .then((data) => {
           console.log(this.loginForm.value); //printing password & username
           localStorage.setItem('token', data.token);
+          localStorage.setItem('roleId', data.roleId);
+          localStorage.setItem('username', data.username);
+
           this.snackBar.open('Login successful!', 'Close', {
             duration: 3000,
             verticalPosition: 'top',

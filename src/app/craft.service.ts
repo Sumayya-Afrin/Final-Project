@@ -58,19 +58,25 @@ export class CraftService {
     return this.http.get(`${API}/crafts?search=${searchTerm}`);
   }
 
-  addProduct(craft: any) {
-    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const existingProductIndex = cart.findIndex(
-      (i: { craftId: any }) => craft.craftId === i.craftId
-    );
-
-    if (existingProductIndex !== -1) {
-      cart[existingProductIndex].qty += 1; // Update quantity if the product is already in the cart
-    } else {
-      // Initialize quantity
-      cart.push(craft); // Add new product to cart
+  addCraftP(item: any) {
+    if (item.quantity <= 0) {
+      console.error(`Cannot add ${item.name} to cart. Out of stock.`);
+      return;
     }
-
-    localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart to localStorage
   }
+  // addProduct(craft: any) {
+  //   let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  //   const existingProductIndex = cart.findIndex(
+  //     (i: { craftId: any }) => craft.craftId === i.craftId
+  //   );
+
+  //   if (existingProductIndex !== -1) {
+  //     cart[existingProductIndex].qty += 1; // Update quantity if the product is already in the cart
+  //   } else {
+  //     // Initialize quantity
+  //     cart.push(craft); // Add new product to cart
+  //   }
+
+  //   localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart to localStorage
+  // }
 }

@@ -25,6 +25,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './crafts.component.scss',
 })
 export class CraftsComponent {
+  like = 0;
   // @Input() craft1 = {
   //   title: 'Artisan Wooden Bowl',
   //   description:
@@ -38,6 +39,9 @@ export class CraftsComponent {
   @Input() craft!: ICraft;
   @Output() deleteCraftEvent = new EventEmitter<any>();
   @Output() updateCraftEvent = new EventEmitter<any>();
+  @Output() addItemEvent: EventEmitter<ICraft> = new EventEmitter<ICraft>();
+
+  @Input() roleId: any;
 
   isLoading: boolean = true;
   msg = '';
@@ -50,6 +54,11 @@ export class CraftsComponent {
     public router: Router,
     private snackBar: MatSnackBar
   ) {}
+
+  ngOnInit() {
+    this.roleId = localStorage.getItem('roleId');
+    console.log(this.roleId);
+  }
 
   deleteCraft() {
     console.log('Button clicked...');
@@ -65,6 +74,10 @@ export class CraftsComponent {
   }
 
   addToCart() {
-    this.craftservice.addProduct(this.craft);
+    this.addItemEvent.emit(this.craft);
+  }
+
+  likeIncrement() {
+    this.like = this.like + 1;
   }
 }

@@ -112,6 +112,10 @@ export class CraftListComponent {
     });
   }
 
+  addOneProduct(item: ICraft) {
+    return this.craftService.addCraftP(item);
+  }
+
   async deleteCraftP(craft: ICraft) {
     const confirmed = await this.openConfirmDialog(
       'Are you sure you want to delete this craft?'

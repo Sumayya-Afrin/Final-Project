@@ -18,7 +18,7 @@ export const routes: Routes = [
 
   { path: 'category/:categoryName', component: CategoryComponent },
 
-  { path: 'login', component: LoginComponent },
+  { path: 'loginUser', component: LoginComponent },
 
   { path: 'signup', component: SignUpComponent },
   {

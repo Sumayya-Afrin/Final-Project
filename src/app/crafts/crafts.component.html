@@ -46,14 +46,18 @@
     <!-- <h6 class="craft-category">{{ craft.category }}</h6> -->
 
     <div class="action-buttons-container">
+      @if (roleId==0) {
+
       <button
         mat-icon-button
         aria-label="Delete craft"
         (click)="deleteCraft()"
-        style="color: rgb(12, 34, 175)"
+        style="color: rgb(192, 17, 17)"
       >
         <mat-icon>delete</mat-icon>
       </button>
+
+      } @if (roleId==0) {
       <button
         mat-icon-button
         aria-label="Edit Movie"
@@ -62,16 +66,23 @@
       >
         <mat-icon>edit</mat-icon>
       </button>
+      }
 
       <button
         mat-icon-button
-        style="color: rgb(192, 17, 17)"
-        (click)="addToCart()"
+        aria-label="Like to movie"
+        [matBadge]="like"
+        color="primary"
+        (click)="likeIncrement()"
       >
-        <mat-icon><i class="fa-solid fa-heart"></i></mat-icon>
+        <mat-icon>thumb_up</mat-icon>
       </button>
 
-      <button mat-icon-button style="color: rgb(12, 34, 175)">
+      <button
+        mat-icon-button
+        style="color: rgb(12, 34, 175)"
+        (click)="addToCart()"
+      >
         <mat-icon><i class="fa-solid fa-cart-shopping"></i></mat-icon>
       </button>
     </div>
