@@ -53,6 +53,14 @@
     >}
   </mat-form-field>
 
+  <mat-form-field>
+    <mat-label>StockQuantity</mat-label>
+    <input matInput placeholder="Eg: 20" formControlName="StockQuantity" />
+    @if(StockQuantity?.touched && StockQuantity?.hasError('required') ){
+    <mat-error>StockQuantity is <strong>required</strong></mat-error
+    >}
+  </mat-form-field>
+
   <button
     mat-raised-button
     type="submit"

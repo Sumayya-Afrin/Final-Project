@@ -40,6 +40,8 @@ export class CraftListComponent {
   craftList: any = [];
   isLoading: boolean = true;
   msg = '';
+  selectedCategory: string = '';
+  dropdownOpen: boolean = false;
   // $craft: any;
 
   constructor(
@@ -131,5 +133,15 @@ export class CraftListComponent {
       console.log('navigating....');
       this.router.navigate(['Crafts', 'edit', craft.craftId]);
     }
+  }
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
+  applyFilter(category: string) {
+    this.selectedCategory = category;
+    this.dropdownOpen = false;
+    this.searchCraft.get('search')?.updateValueAndValidity(); // Trigger search
   }
 }

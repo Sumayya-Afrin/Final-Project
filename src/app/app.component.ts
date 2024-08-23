@@ -14,6 +14,7 @@ export interface ICraft {
   price: string;
   imageUrl: string;
   craftId: number;
+  StockQuantity: number;
 }
 
 @Component({

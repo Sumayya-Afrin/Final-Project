@@ -58,6 +58,7 @@ export class SignUpComponent {
             verticalPosition: 'top',
             horizontalPosition: 'center',
           });
+          console.log('Navigating to the loginpage...');
           this.router.navigate(['/login']);
         })
         .catch((error) => {

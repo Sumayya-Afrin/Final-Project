@@ -1,15 +1,25 @@
 <!-- <app-search-craft></app-search-craft> -->
 <div class="serch-add">
-  <form [formGroup]="searchCraft" class="search-bar">
-    <input
-      type="search"
-      placeholder="search crafts..."
-      formControlName="search"
-      class="search-input"
-    />
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <button mat-button routerLink="/Crafts/add">➕</button>
-  </form>
+  <div>
+    <form [formGroup]="searchCraft" class="search-bar">
+      <input
+        type="search"
+        placeholder="search crafts..."
+        formControlName="search"
+        class="search-input"
+      />
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <button mat-button routerLink="/Crafts/add">➕</button>
+      <div class="dropdown">
+        <button class="dropbtn" (click)="toggleDropdown()">Filter</button>
+        <div class="dropdown-content" *ngIf="dropdownOpen">
+          <a (click)="applyFilter('knitting')">Knitting</a>
+          <a (click)="applyFilter('painting')">Painting</a>
+          <a (click)="applyFilter('sculpture')">Sculpture</a>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
 <section class="craft-list-container">

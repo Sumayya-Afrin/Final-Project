@@ -9,6 +9,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
 import { TitleCasePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { CraftsComponent } from '../crafts/crafts.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-category',
   standalone: true,
@@ -19,32 +22,22 @@ import { Router } from '@angular/router';
     MatCardModule,
     MatBadgeModule,
     RouterLink,
+    CraftsComponent,
+    ReactiveFormsModule,
   ],
   templateUrl: './category.component.html',
   styleUrl: './category.component.scss',
 })
 export class CategoryComponent {
-  categoryName: string | null = '';
-  crafts: ICraft[] = [];
+  crafts: any;
+  filteredCrafts: any[] = [];
+  searchForm!: FormGroup;
+  isLoading = true;
+  errorMessage: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
     private craftService: CraftService,
     private router: Router
   ) {}
-
-  ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      this.categoryName = params.get('categoryName');
-      if (this.categoryName) {
-        this.loadCraftsByCategory(this.categoryName);
-      }
-    });
-  }
-
-  loadCraftsByCategory(category: string): void {
-    this.craftService.searchCraft(category).subscribe((crafts: any) => {
-      this.crafts = crafts;
-    });
-  }
 }

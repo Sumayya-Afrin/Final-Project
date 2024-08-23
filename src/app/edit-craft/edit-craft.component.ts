@@ -50,6 +50,7 @@ export class EditCraftComponent {
       category: ['', [Validators.required]],
       price: ['', [Validators.required]],
       imageUrl: ['', [Validators.required]],
+      StockQuantity: ['', [Validators.required]],
     });
   }
 
@@ -113,6 +114,10 @@ export class EditCraftComponent {
   }
 
   get imageUrl() {
+    return this.craftsForm.get('imageUrl');
+  }
+
+  get StockQuantity() {
     return this.craftsForm.get('imageUrl');
   }
 }

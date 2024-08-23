@@ -1,0 +1,9 @@
+<div class="all-crafts-container">
+  @for(course of filteredCrafts; track crafts.craftId) {
+
+  <app-crafts>
+    [craft]="craft" (deleteCraftEvent)="deleteCraftP($event)"
+    (updateCraftEvent)="editCraftP($event)" [id]="craft.craftId"
+  </app-crafts>
+  }
+</div>

@@ -49,6 +49,7 @@ export class AddComponent {
       category: ['', [Validators.required]],
       price: ['', [Validators.required]],
       imageUrl: ['', [Validators.required]],
+      StockQuantity: ['', [Validators.required]],
     });
   }
 
@@ -106,5 +107,9 @@ export class AddComponent {
 
   get imageUrl() {
     return this.craftsForm.get('imageUrl');
+  }
+
+  get StockQuantity() {
+    return this.craftsForm.get('StockQuantity');
   }
 }
