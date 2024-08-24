@@ -1,0 +1,62 @@
+.course-container
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+   justify-content: center;
+   font-family: Mukta;
+    
+}
+
+.course-container > div:hover {
+
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+mat-card
+{
+    height: 450px;
+    background-color: whitesmoke;
+}
+
+ .program-type {
+    color: #fff;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 5px 7px;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 8px;
+    background-color: #091112;
+    border-radius: 10px;
+    margin-top: 0px;
+}
+
+
+.start-learning {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    background-color: #030405; 
+    border: none;
+    border-radius: 5px;
+    text-decoration: none; 
+    transition: background-color 0.3s, transform 0.3s; 
+    max-width: 300px;
+    align-self: center;
+}
+
+.start-learning:hover {
+    background-color: #070708; 
+    transform: scale(1.05); 
+}
+
+.start-learning:focus {
+    outline: 2px solid #05090d;
+    outline-offset: 2px;
+}

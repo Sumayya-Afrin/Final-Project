@@ -27,32 +27,44 @@
   href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
   rel="stylesheet"
 />
-<nav class="head">
-  <div class="header">
-    <ul>
-      <li class="logo">
+<ul>
+  <div class="home-bar">
+    <li>
+      <a
+        routerLink=""
+        style="font-family: Pacifico; font-weight: 300; font-size: 2rem"
+      >
+        Craftopia<i class="fa-solid fa-paintbrush"></i
+      ></a>
+    </li>
+    <div>
+      <li>
+        <a routerLink="/loginUser"><i class="fa-solid fa-user"></i></a>
+      </li>
+
+      <li>
+        <a routerLink="/courses"> Tutorials</a>
+      </li>
+    </div>
+  </div>
+</ul>
+
+<router-outlet />
+
+<!-- <li class="logo">
         <a
           routerLink=""
           style="font-family: Pacifico; font-weight: 300; font-size: 2rem"
         >
           Craftopia<i class="fa-solid fa-paintbrush"></i
         ></a>
-      </li>
+      </li> -->
 
-      @if(loginservice.loginSuccess){
-      <li class="login-icon">
-        <a routerLink="/loginUser"><i class="fa-solid fa-user"></i></a>
-      </li>
-      } @else {
+<!-- @if(!loginservice.loginSuccess){
       <li class="login-icon">
         <a routerLink="/logout"
           ><i class="fa-solid fa-right-from-bracket"></i
         ></a>
       </li>
 
-      }
-    </ul>
-  </div>
-</nav>
-
-<router-outlet />
+      } @else { -->

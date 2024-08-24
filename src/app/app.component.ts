@@ -35,10 +35,12 @@ export interface ICraft {
 })
 export class AppComponent {
   title = 'crafts-project';
+  // loginSuccess: boolean = false;
   constructor(public loginservice: LoginServiceService) {}
   ngOnInit() {
     if (localStorage.length > 0) {
       this.loginservice.loginSuccess = true;
+      console.log('login....');
     }
   }
 }

@@ -40,13 +40,6 @@ export class LoginComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
-  // login() {
-  //   console.log(this.loginForm.value);
-  //   this.loginService.login(this.loginForm.value).then((data) => {
-  //     localStorage.setItem('token', data.token);
-  //     this.router.navigate(['/Crafts']);
-  //   });
-  // }
 
   login() {
     if (this.loginForm.valid) {

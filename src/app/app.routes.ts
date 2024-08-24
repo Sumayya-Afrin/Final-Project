@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CategoryComponent } from './category/category.component';
+import { CourseComponent } from './course/course.component';
 // import { authGuard } from '../../auth.guard';
 
 export const routes: Routes = [
@@ -23,6 +24,9 @@ export const routes: Routes = [
   { path: 'logout', component: HomeComponent },
 
   { path: 'signup', component: SignUpComponent },
+
+  { path: 'courses', component: CourseComponent },
+
   {
     path: 'Crafts',
     children: [
