@@ -36,11 +36,24 @@ export interface ICraft {
 export class AppComponent {
   title = 'crafts-project';
   // loginSuccess: boolean = false;
-  constructor(public loginservice: LoginServiceService) {}
-  ngOnInit() {
-    if (localStorage.length > 0) {
+  constructor(public loginservice: LoginServiceService) {
+    if (localStorage.getItem('username')) {
       this.loginservice.loginSuccess = true;
-      console.log('login....');
+      console.log(this.loginservice.loginSuccess);
+      console.log('user is logged in.');
     }
+  }
+  ngOnInit() {
+    if (localStorage.getItem('username')) {
+      this.loginservice.loginSuccess = true;
+      console.log(this.loginservice.loginSuccess);
+      console.log('user is logged in.');
+    }
+  }
+
+  logout() {
+    // console.log('logout..');
+    localStorage.clear();
+    this.loginservice.loginSuccess = false;
   }
 }

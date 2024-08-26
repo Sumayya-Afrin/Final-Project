@@ -38,10 +38,13 @@
       ></a>
     </li>
     <div>
+      @if(!loginservice.loginSuccess){
       <li>
         <a routerLink="/loginUser"><i class="fa-solid fa-user"></i></a>
       </li>
-
+      } @else {
+      <a (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i></a>
+      }
       <li>
         <a routerLink="/courses"> Tutorials</a>
       </li>
