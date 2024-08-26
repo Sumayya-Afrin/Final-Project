@@ -1,13 +1,65 @@
-<!-- cart.component.html -->
-<div *ngIf="cartItems.length > 0; else emptyCart">
-  <ul>
-    <li *ngFor="let item of cartItems">
-      <img [src]="item.imageUrl" alt="{{ item.title }}" />
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.description }}</p>
-    </li>
-  </ul>
-</div>
-<ng-template #emptyCart>
-  <p>Your cart is empty.</p>
-</ng-template>
+<section class="cart-container">
+  <h1>Your Cart 🛒</h1>
+
+  <div>
+    @if(cartItems.length > 0){
+    <div>
+      @for(item of cartItems ; track $index){
+
+      <div class="cart-item">
+        <img
+          src="{{ item.craft.imageUrl }}"
+          alt="{{ item.craft.title }}"
+          class="product-image"
+        />
+        <h2>{{ item.craft.title }} ({{ item.quantity }})</h2>
+
+        <p>
+          {{ item.craft.price }} x {{ item.quantity }} =
+          {{ item.craft.price * item.quantity }}
+        </p>
+
+        <button
+          mat-icon-button
+          (click)="removeItem(item.craft.craftId)"
+          style="
+            width: 5%;
+
+            color: black;
+            align-items: center;
+            border-radius: 20%;
+          "
+        >
+          <mat-icon><i class="fa-solid fa-trash"></i></mat-icon>
+        </button>
+      </div>
+
+      }
+    </div>
+    <div class="cart-total">
+      <h2>Total: {{ total | currency : "INR" }}</h2>
+    </div>
+
+    <div class="buy-container" style="display: flex; gap: 3rem">
+      <button
+        mat-button
+        style="color: white; background-color: black; border-radius: 10%"
+      >
+        Buy Items
+      </button>
+
+      <button
+        mat-button
+        style="color: white; background-color: black; border-radius: 10%"
+      >
+        Back to Crafts
+      </button>
+    </div>
+
+    } @else {
+    <div>
+      <h2>Your cart is empty</h2>
+    </div>
+    }
+  </div>
+</section>

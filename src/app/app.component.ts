@@ -12,7 +12,7 @@ export interface ICraft {
   title: string;
   description: string;
   category: string;
-  price: string;
+  price: any;
   imageUrl: string;
   craftId: number;
   StockQuantity: number;

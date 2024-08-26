@@ -8,9 +8,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CraftService {
-  gettingCart(): any {
-    throw new Error('Method not implemented.');
-  }
+  cart: Array<{ craft: ICraft; quantity: number }> = [];
+
   constructor(private http: HttpClient) {}
 
   addCraftSer(newCraft: NewCraft) {
@@ -58,25 +57,21 @@ export class CraftService {
     return this.http.get(`${API}/crafts?search=${searchTerm}`);
   }
 
-  addCraftP(item: any) {
-    if (item.quantity <= 0) {
-      console.error(`Cannot add ${item.name} to cart. Out of stock.`);
-      return;
+  addCraftP(craft: ICraft) {
+    const item = this.cart.find((p) => p.craft.craftId === craft.craftId);
+    if (item) {
+      item.quantity += 1;
+    } else {
+      this.cart.push({ craft, quantity: 1 });
     }
+    console.log(this.cart);
   }
-  // addProduct(craft: any) {
-  //   let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-  //   const existingProductIndex = cart.findIndex(
-  //     (i: { craftId: any }) => craft.craftId === i.craftId
-  //   );
 
-  //   if (existingProductIndex !== -1) {
-  //     cart[existingProductIndex].qty += 1; // Update quantity if the product is already in the cart
-  //   } else {
-  //     // Initialize quantity
-  //     cart.push(craft); // Add new product to cart
-  //   }
+  getCartItems(): Array<{ craft: ICraft; quantity: number }> {
+    return this.cart;
+  }
 
-  //   localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart to localStorage
-  // }
+  removeItem(craftId: number) {
+    this.cart = this.cart.filter((item) => item.craft.craftId !== craftId);
+  }
 }

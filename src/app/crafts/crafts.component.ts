@@ -74,10 +74,12 @@ export class CraftsComponent {
   }
 
   addToCart() {
-    this.addItemEvent.emit(this.craft);
+    console.log('Item Clicked');
+    this.craftservice.addCraftP(this.craft);
   }
 
   likeIncrement() {
+    console.log('like');
     this.like = this.like + 1;
   }
 }

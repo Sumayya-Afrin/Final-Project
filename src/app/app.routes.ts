@@ -12,12 +12,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CategoryComponent } from './category/category.component';
 import { CourseComponent } from './course/course.component';
+import { CartComponent } from './cart/cart.component';
 // import { authGuard } from '../../auth.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-
-  { path: 'category/:categoryName', component: CategoryComponent },
 
   { path: 'loginUser', component: LoginComponent },
 
@@ -26,6 +25,8 @@ export const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
 
   { path: 'courses', component: CourseComponent },
+
+  { path: 'cart', component: CartComponent },
 
   {
     path: 'Crafts',
