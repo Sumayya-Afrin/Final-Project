@@ -12,6 +12,8 @@ import { LoginServiceService } from '../login-service.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCard } from '@angular/material/card';
+import { CartService } from '../cart.service';
+import { CraftService } from '../craft.service';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +34,8 @@ export class LoginComponent {
     public loginService: LoginServiceService,
     private router: Router,
     private fb: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private craftService: CraftService
   ) {
     // formGroup -> formControlName
     this.loginForm = this.fb.group({
@@ -50,6 +53,7 @@ export class LoginComponent {
           localStorage.setItem('token', data.token);
           localStorage.setItem('roleId', data.roleId);
           localStorage.setItem('username', data.username);
+          this.craftService.isToken = true;
 
           this.snackBar.open('Login successful!', 'Close', {
             duration: 3000,

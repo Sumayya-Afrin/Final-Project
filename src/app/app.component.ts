@@ -7,6 +7,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { LoginServiceService } from './login-service.service';
+import { CraftService } from './craft.service';
 
 export interface ICraft {
   title: string;
@@ -36,17 +37,14 @@ export interface ICraft {
 export class AppComponent {
   title = 'crafts-project';
   // loginSuccess: boolean = false;
-  constructor(public loginservice: LoginServiceService) {
-    if (localStorage.getItem('username')) {
-      this.loginservice.loginSuccess = true;
-      console.log(this.loginservice.loginSuccess);
-      console.log('user is logged in.');
-    }
-  }
+  constructor(
+    public loginservice: LoginServiceService,
+    public craftService: CraftService
+  ) {}
   ngOnInit() {
     if (localStorage.getItem('username')) {
-      this.loginservice.loginSuccess = true;
-      console.log(this.loginservice.loginSuccess);
+      this.craftService.isToken = true;
+      console.log(this.craftService.isToken);
       console.log('user is logged in.');
     }
   }
@@ -54,6 +52,8 @@ export class AppComponent {
   logout() {
     // console.log('logout..');
     localStorage.clear();
+    this.craftService.isToken = false;
     this.loginservice.loginSuccess = false;
+    // localStorage
   }
 }

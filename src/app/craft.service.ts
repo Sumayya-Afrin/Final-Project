@@ -9,11 +9,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CraftService {
   cart: Array<{ craft: ICraft; quantity: number }> = [];
+  isToken: boolean = false;
 
   constructor(private http: HttpClient) {}
 
-  addCraftSer(newCraft: NewCraft) {
-    return fetch(`${API}/crafts`, {
+  async addCraftSer(newCraft: NewCraft) {
+    return await fetch(`${API}/crafts`, {
       method: 'POST',
       body: JSON.stringify(newCraft),
       headers: {
@@ -23,16 +24,16 @@ export class CraftService {
     }).then((res) => res.json());
   }
 
-  getAllCrafts(): Promise<ICraft[]> {
-    return fetch(`${API}/crafts`).then((res) => res.json());
+  async getAllCrafts(): Promise<ICraft[]> {
+    return await fetch(`${API}/crafts`).then((res) => res.json());
   }
 
-  getCraftByIdP(id: string): Promise<ICraft> {
-    return fetch(`${API}/crafts/${id}`).then((res) => res.json());
+  async getCraftByIdP(id: string): Promise<ICraft> {
+    return await fetch(`${API}/crafts/${id}`).then((res) => res.json());
   }
 
-  deleteCraftById(craft: ICraft) {
-    return fetch(`${API}/crafts/del/${craft.craftId}`, {
+  async deleteCraftById(craft: ICraft) {
+    return await fetch(`${API}/crafts/del/${craft.craftId}`, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
@@ -41,9 +42,9 @@ export class CraftService {
     }).then((res) => res.json());
   }
 
-  updateCraftsInfo(updatedCraft: ICraft) {
+  async updateCraftsInfo(updatedCraft: ICraft) {
     console.log('updating...');
-    return fetch(`${API}/crafts/${updatedCraft.craftId}`, {
+    return await fetch(`${API}/crafts/${updatedCraft.craftId}`, {
       method: 'PUT',
       body: JSON.stringify(updatedCraft),
       headers: {
