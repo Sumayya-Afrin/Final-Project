@@ -76,10 +76,19 @@ export class CraftsComponent {
   addToCart() {
     console.log('Item Clicked');
     this.craftservice.addCraftP(this.craft);
+    this.showSnackBar('Craft added to cart!', 'Close');
   }
 
   likeIncrement() {
     console.log('like');
     this.like = this.like + 1;
+  }
+
+  showSnackBar(message: string, action: string = 'Close') {
+    this.snackBar.open(message, action, {
+      duration: 3000, // Duration in milliseconds
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+    });
   }
 }

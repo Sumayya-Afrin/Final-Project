@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 import { CraftsComponent } from './crafts/crafts.component';
@@ -16,7 +16,7 @@ export interface ICraft {
   price: any;
   imageUrl: string;
   craftId: number;
-  StockQuantity: number;
+  StockQuantity: any;
 }
 
 @Component({
@@ -37,6 +37,7 @@ export interface ICraft {
 export class AppComponent {
   title = 'crafts-project';
   // loginSuccess: boolean = false;
+  @Input() roleId: any;
   constructor(
     public loginservice: LoginServiceService,
     public craftService: CraftService

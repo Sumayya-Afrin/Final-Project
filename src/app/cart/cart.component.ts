@@ -53,10 +53,18 @@ export class CartComponent {
     );
   }
 
-  removeItem(craftId: number) {
+  async removeItem(craftId: number) {
     this.craftservice.removeItem(craftId);
-    this.cartItems = this.craftservice.getCartItems();
-    this.calculateTotal();
+    const status = await this.openConfirmDialog(
+      'Are you sure you want to remove the item from cart?'
+    );
+
+    if (status) {
+      this.showSnackBar('Craft removed from cart!', 'Close');
+
+      this.cartItems = this.craftservice.getCartItems();
+      this.calculateTotal();
+    }
   }
 
   showSnackBar(message: string, action: string = 'Close') {
