@@ -58,6 +58,7 @@ export class CraftsComponent {
   ngOnInit() {
     this.roleId = localStorage.getItem('roleId');
     console.log(this.roleId);
+    this.loadLikes();
   }
 
   deleteCraft() {
@@ -79,9 +80,17 @@ export class CraftsComponent {
     this.showSnackBar('Craft added to cart!', 'Close');
   }
 
+  loadLikes() {
+    const storedLikes = localStorage.getItem(`likes_${this.craft.craftId}`);
+    if (storedLikes) {
+      this.like = parseInt(storedLikes, 10);
+    }
+  }
+
   likeIncrement() {
     console.log('like');
     this.like = this.like + 1;
+    localStorage.setItem(`likes_${this.craft.craftId}`, this.like.toString());
   }
 
   showSnackBar(message: string, action: string = 'Close') {

@@ -55,11 +55,15 @@ export class LoginComponent {
           localStorage.setItem('username', data.username);
           this.craftService.isToken = true;
 
-          this.snackBar.open('Login successful!', 'Close', {
-            duration: 3000,
-            verticalPosition: 'top',
-            horizontalPosition: 'center',
-          });
+          this.snackBar.open(
+            `Login successful , welcome ${data.username}!`,
+            'Close',
+            {
+              duration: 3000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center',
+            }
+          );
           this.router.navigate(['/Crafts']);
         })
         .catch((error) => {
